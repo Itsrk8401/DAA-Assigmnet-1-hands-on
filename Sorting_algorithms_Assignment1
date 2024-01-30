@@ -10,55 +10,61 @@ Implement :
 public class SortingAlgorithms {
     
     // Insertion Sort
-    public static int[] insertionSort(int[] arr) {
-        int n = arr.length;
+
+    public static int[] insertionSort(int[] ray) {
+        int n = ray.length;
         for (int i = 1; i < n; i++) {
-            int key = arr[i];
+            int key = ray[i];
             int j = i - 1;
-            while (j >= 0 && key < arr[j]) {
-                arr[j + 1] = arr[j];
+            while (j >= 0 && key < ray[j]) {
+                ray[j + 1] = ray[j];
                 j--;
             }
-            arr[j + 1] = key;
+            ray[j + 1] = key;
         }
-        return arr;
+        return ray;
     }
 
+
     // Selection Sort
-    public static int[] selectionSort(int[] arr) {
-        int n = arr.length;
+
+    public static int[] selectionSort(int[] ray) {
+        int n = ray.length;
         for (int i = 0; i < n - 1; i++) {
             int minIdx = i;
             for (int j = i + 1; j < n; j++) {
-                if (arr[j] < arr[minIdx]) {
+                if (ray[j] < ray[minIdx]) {
                     minIdx = j;
                 }
             }
-            int temp = arr[minIdx];
-            arr[minIdx] = arr[i];
-            arr[i] = temp;
+            int temp = ray[minIdx];
+            ray[minIdx] = ray[i];
+            ray[i] = temp;
         }
-        return arr;
+        return ray;
     }
 
+
     // Bubble Sort
-    public static int[] bubbleSort(int[] arr) {
-        int n = arr.length;
+
+    public static int[] bubbleSort(int[] ray) {
+        int n = ray.length;
         for (int i = 0; i < n - 1; i++) {
             for (int j = 0; j < n - i - 1; j++) {
-                if (arr[j] > arr[j + 1]) {
-                    int temp = arr[j];
-                    arr[j] = arr[j + 1];
-                    arr[j + 1] = temp;
+                if (ray[j] > ray[j + 1]) {
+                    int temp = ray[j];
+                    ray[j] = ray[j + 1];
+                    ray[j + 1] = temp;
                 }
             }
         }
-        return arr;
+        return ray;
     }
 
     // Utility method to print an array
-    public static void printArray(int[] arr) {
-        for (int num : arr) {
+
+    public static void printarray(int[] ray) {
+        for (int num : ray) {
             System.out.print(num + " ");
         }
         System.out.println();
@@ -66,29 +72,30 @@ public class SortingAlgorithms {
 
     // Main method for testing
     public static void main(String[] args) {
-        int[] arr = {5, 1, 4, 2, 8};
+        int[] ray = {5, 1, 4, 2, 8};
 
         // Testing insertion sort
-        int[] sortedArrInsertion = insertionSort(arr.clone());
+        int[] sortedrayInsertion = insertionSort(ray.clone());
         System.out.print("Insertion Sort: ");
-        printArray(sortedArrInsertion);
+        printarray(sortedrayInsertion);
 
         // Testing selection sort
-        int[] sortedArrSelection = selectionSort(arr.clone());
+        int[] sortedraySelection = selectionSort(ray.clone());
         System.out.print("Selection Sort: ");
-        printArray(sortedArrSelection);
+        printarray(sortedraySelection);
 
         // Testing bubble sort
-        int[] sortedArrBubble = bubbleSort(arr.clone());
+        int[] sortedrayBubble = bubbleSort(ray.clone());
         System.out.print("Bubble Sort: ");
-        printArray(sortedArrBubble);
+        printarray(sortedrayBubble);
     }
 }
 
 Correctness Argument for Selection Sort:
-Selection sort works by repeatedly finding the minimum element from the unsorted part of the array and swapping it with the first unsorted element. This process continues until the entire array is sorted. The correctness of selection sort can be argued based on the following points:
+Selection sort works by repeatedly finding the minimum element from the unsorted part of the array and swapping it with the first unsorted element. 
+This process continues until the entire array is sorted. The correctness of selection sort can be argued based on the following points:
 
-Invariant: At the beginning of each iteration, the prefix of the array (from the beginning up to the current position) is sorted.
-Termination: The algorithm terminates when the entire array is sorted, as it consistently selects the smallest unsorted element and moves it to the correct position.
-Swap Operations: Selection sort only swaps elements once the minimum element is found, ensuring that each element is in its final sorted position.
-
+1. Invariant: At the beginning of each iteration, the prefix of the array (from the beginning up to the current position) is sorted.
+2. Termination: The algorithm terminates when the entire array is sorted, as it consistently selects the smallest unsorted element and moves it to the correct position.
+3. Swap Operations: Selection sort only swaps elements once the minimum element is found, ensuring that each element is in its final sorted position.
+4. Holistic Approach : Selection sorts only after finding the minimum element in that array and repeats it again and again for the least minimum element from the leftover unsorted array which basically defines holistic approach as it is ensuring to identify the condition first and then sort so that sorting happens in the most proficient manner.
